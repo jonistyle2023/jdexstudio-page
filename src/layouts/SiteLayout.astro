@@ -1,0 +1,50 @@
+---
+import '../styles.css';
+import themeBootstrap from '../theme-bootstrap.js?raw';
+import { assetUrl } from '../lib/urls.js';
+interface Props {
+  title?: string;
+  description?: string;
+  indexable?: boolean;
+}
+const {
+  title = 'JdexStudio | Automatización y software a medida',
+  description = 'Automatización de procesos, desarrollo web, software a medida y soluciones cloud para tu empresa. Conoce al equipo de JdexStudio.',
+  indexable = false,
+} = Astro.props;
+const homeUrl = Astro.site ? `${Astro.site.href.replace(/\/$/, '')}/` : null;
+const canIndex = indexable && Boolean(homeUrl);
+const socialImage = homeUrl ? new URL('assets/facebook_cover.png', homeUrl).href : assetUrl('assets/facebook_cover.png');
+---
+<!doctype html>
+<html lang="es" data-motion="on">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline set:html={themeBootstrap}></script>
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {!canIndex && <meta name="robots" content="noindex, nofollow" />}
+    {canIndex && <link rel="canonical" href={homeUrl} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_EC" />
+    <meta property="og:image" content={socialImage} />
+    {canIndex && <meta property="og:url" content={homeUrl} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href={assetUrl('assets/icon/icono-original.svg')} type="image/svg+xml" />
+    <link rel="preload" href={assetUrl('assets/fonts/Poppins-SemiBold.ttf')} as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href={assetUrl('assets/fonts/Inter-VariableFont_opsz,wght.ttf')} as="font" type="font/ttf" crossorigin />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <slot />
+    <script>
+      import '../main.js';
+    </script>
+  </body>
+</html>

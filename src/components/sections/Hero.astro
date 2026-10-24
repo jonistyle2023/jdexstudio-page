@@ -1,0 +1,21 @@
+---
+import { assetUrl } from '../../lib/urls.js';
+---
+<section class="hero container" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">Automatizamos procesos para que tu empresa <span>avance.</span></h1>
+          <p>Desarrollamos software a medida, conectamos sistemas y te ayudamos a reducir tareas manuales con soluciones pensadas para tu negocio.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#contacto" data-booking>Agendar una consulta <svg class="icon" aria-hidden="true"><use href="#arrow-up-right" /></svg></a><a class="text-link" href="#servicios">Explorar servicios <svg class="icon" aria-hidden="true"><use href="#arrow-right" /></svg></a></div>
+          <p class="consultation-note"><svg class="icon" aria-hidden="true"><use href="#clock" /></svg>40 minutos para conversar sobre tu proceso o proyecto.</p>
+        </div>
+        <figure class="hero-visual" aria-labelledby="flow-caption">
+          <div class="flow-canvas" aria-hidden="true">
+            <svg class="flow-routes" viewBox="0 0 500 500" fill="none"><path class="route" d="M55 120h125q24 0 24 24v78M34 250h170M55 380h125q24 0 24-24v-78M294 250h74q24 0 24-24v-82h70M294 250h74q24 0 24 24v82h70"/><path class="flow-signal flow-signal-input-a" pathLength="100" d="M55 120h125q24 0 24 24v78"/><path class="flow-signal flow-signal-input-b" pathLength="100" d="M34 250h170"/><path class="flow-signal flow-signal-input-c" pathLength="100" d="M55 380h125q24 0 24-24v-78"/><path class="flow-signal flow-signal-output-a" pathLength="100" d="M294 250h74q24 0 24-24v-82h70"/><path class="flow-signal flow-signal-output-b" pathLength="100" d="M294 250h74q24 0 24 24v82h70"/><circle cx="55" cy="120" r="5"/><circle cx="34" cy="250" r="5"/><circle cx="55" cy="380" r="5"/><circle cx="462" cy="144" r="5"/><circle cx="462" cy="356" r="5"/></svg>
+            <span class="flow-label flow-label-a"><svg class="icon" aria-hidden="true"><use href="#scope" /></svg>Tus procesos</span><span class="flow-label flow-label-b"><svg class="icon" aria-hidden="true"><use href="#software" /></svg>Tus herramientas</span><span class="flow-label flow-label-c"><svg class="icon" aria-hidden="true"><use href="#database" /></svg>Tu información</span>
+            <div class="flow-center"><img src={assetUrl("/assets/icon/icono-original.svg")} width="999" height="991" alt="" /><span>Una solución<br />a tu medida</span></div>
+            <span class="flow-result flow-result-a">Sistemas<br /><strong>conectados</strong></span><span class="flow-result flow-result-b">Procesos<br /><strong>automatizados</strong></span>
+            <div class="flow-bottom"><span class="flow-dot"></span> Menos tareas manuales. Más conexión.</div>
+          </div>
+          <figcaption id="flow-caption"><span>Ejemplo de flujo de automatización</span><button class="flow-replay" type="button" data-flow-toggle hidden aria-pressed="false" aria-label="Pausar animación del flujo de automatización"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path class="flow-pause-symbol" d="M9 5v14m6-14v14"/><path class="flow-play-symbol" d="m8 5 11 7-11 7Z"/></svg><span>Pausar flujo</span></button></figcaption>
+        </figure>
+      </section>

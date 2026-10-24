@@ -1,0 +1,26 @@
+---
+import { assetUrl } from '../../lib/urls.js';
+---
+<section class="partners section" id="partners" aria-labelledby="partners-title">
+        <div class="container">
+          <div class="partners-heading"><div><h2 id="partners-title">Partners y tecnologías</h2><p>Un ecosistema de herramientas para llevar tus ideas a la práctica.</p></div><button type="button" class="partner-toggle" aria-pressed="false" aria-label="Pausar carrusel de partners" data-partner-toggle><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path class="pause-symbol" d="M9 5v14m6-14v14"/><path class="play-symbol" d="m8 5 11 7-11 7Z"/></svg><span>Pausar</span></button></div>
+          <div class="partner-marquee" tabindex="0" aria-label="Partners y tecnologías">
+            <div class="partner-belt">
+              <ul class="partner-track" aria-label="Partners y tecnologías">
+                <li><img src={assetUrl("/assets/partners-logos/google-cloud-partner-logo.svg")} alt="Google Cloud" width="240" height="110" loading="lazy" /></li>
+                <li><img src={assetUrl("/assets/partners-logos/aws-partner-logo.svg")} alt="AWS" width="240" height="110" loading="lazy" /></li>
+                <li><img src={assetUrl("/assets/partners-logos/microsoft-partner-logo.svg")} alt="Microsoft" width="240" height="110" loading="lazy" /></li>
+                <li><img src={assetUrl("/assets/partners-logos/anthropic-partner-logo.svg")} alt="Anthropic" width="240" height="110" loading="lazy" /></li>
+                <li><img src={assetUrl("/assets/partners-logos/hostinger-logo.svg")} alt="Hostinger" width="240" height="110" loading="lazy" /></li>
+              </ul>
+              <ul class="partner-track partner-copy" aria-hidden="true">
+                <li><img src={assetUrl("/assets/partners-logos/google-cloud-partner-logo.svg")} alt="" width="240" height="110" loading="lazy" /></li>
+                <li><img src={assetUrl("/assets/partners-logos/aws-partner-logo.svg")} alt="" width="240" height="110" loading="lazy" /></li>
+                <li><img src={assetUrl("/assets/partners-logos/microsoft-partner-logo.svg")} alt="" width="240" height="110" loading="lazy" /></li>
+                <li><img src={assetUrl("/assets/partners-logos/anthropic-partner-logo.svg")} alt="" width="240" height="110" loading="lazy" /></li>
+                <li><img src={assetUrl("/assets/partners-logos/hostinger-logo.svg")} alt="" width="240" height="110" loading="lazy" /></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>

@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import jonathanPhoto from '../../../assets/team/jonathan.jpg';
+import josePhoto from '../../../assets/team/jose.jpg';
+import jeanPhoto from '../../../assets/team/jean.jpg';
+import { team } from '../../data/team.js';
+import { teamImageIsReady } from '../../lib/team-photo.js';
+const portraits = { 'jonathan.jpg': jonathanPhoto, 'jose.jpg': josePhoto, 'jean.jpg': jeanPhoto };
+---
+<section class="team section" id="equipo" aria-labelledby="team-title">
+  <div class="container">
+    <div class="section-intro team-intro">
+      <h2 id="team-title">Tu próximo proyecto<br />empieza con <span>personas.</span></h2>
+      <p>Reunimos experiencia en desarrollo, consultoría, marketing digital y ciberseguridad para abordar tu negocio desde distintas especialidades.</p>
+    </div>
+    <div class="team-grid">
+      {team.map((member) => {
+        const hasPhoto = teamImageIsReady(member.photo);
+        return (
+          <article class:list={['person', { 'has-photo': hasPhoto }]}>
+            {hasPhoto ? (
+              <Image
+                class="person-portrait"
+                src={portraits[member.photo as keyof typeof portraits]}
+                alt={`Retrato de ${member.name}`}
+                width={640}
+                height={640}
+                widths={[240, 480, 640]}
+                sizes="(max-width: 520px) 70px, (max-width: 800px) 28vw, 380px"
+                format="webp"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="person-mark" aria-hidden="true">{member.initials}<span>{member.specialty}</span></div>
+            )}
+            <h3>{member.name}</h3>
+            <p class="person-role">{member.roles.map((role, index) => <Fragment>{index > 0 && <br />}{role}</Fragment>)}</p>
+            <p>{member.description}</p>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>

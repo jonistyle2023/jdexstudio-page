@@ -1,0 +1,29 @@
+# Dependencias y archivos generados
+node_modules/
+dist/
+.astro/
+coverage/
+.cache/
+*.log
+
+# Variables locales; conservar la plantilla
+.env
+.env.*
+!.env.example
+
+# Configuración local, credenciales y herramientas de trabajo
+.aws/
+.codex/
+.agents/
+.impeccable/
+.idea/
+
+# Documentación interna
+.docs/
+
+# Archivos del sistema y temporales del editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~

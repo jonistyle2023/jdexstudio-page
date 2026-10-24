@@ -1,0 +1,13 @@
+---
+import { assetUrl, pageUrl } from '../lib/urls.js';
+---
+<footer class="site-footer agency-footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="footer-about"><a class="brand" href="#inicio" aria-label="JdexStudio, volver al inicio"><img src={assetUrl("/assets/logo/logo-original.svg")} width="1975" height="509" alt="JdexStudio" loading="lazy" /></a><p>Automatización de procesos, desarrollo de software y soluciones tecnológicas para empresas.</p><span class="footer-signoff">Hecho para avanzar.</span></div>
+          <nav class="footer-column" aria-label="Explorar JdexStudio"><h2>Explora</h2><a href="#servicios">Servicios</a><a href="#proceso">Cómo trabajamos</a><a href="#equipo">Nuestro equipo</a><a href="#partners">Partners y tecnologías</a></nav>
+          <div class="footer-column footer-conversation"><h2>Tu próximo paso</h2><p>Conversemos sobre lo que quieres mejorar en tu negocio.</p><a class="footer-booking button button-primary" href="#contacto" data-booking><svg class="icon" aria-hidden="true"><use href="#calendar" /></svg>Agendar una consulta <svg class="icon" aria-hidden="true"><use href="#arrow-up-right" /></svg></a><span>40 minutos para conocer tu proyecto.</span></div>
+        </div>
+        <div class="footer-base"><p>© <span data-year>2026</span> JdexStudio. Todos los derechos reservados.</p><a href={pageUrl("privacidad.html")}>Privacidad</a><a class="back-top" href="#inicio" aria-label="Volver arriba" title="Volver arriba"><svg class="icon" aria-hidden="true"><use href="#arrow-up" /></svg></a></div>
+      </div>
+    </footer>

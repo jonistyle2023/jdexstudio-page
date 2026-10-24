@@ -1,0 +1,7 @@
+---
+import { assetUrl } from '../lib/urls.js';
+interface Props { loading?: 'eager' | 'lazy'; }
+const { loading = 'eager' } = Astro.props;
+---
+<img class="theme-logo-light" src={assetUrl('assets/logo/logo-claro.svg')} width="1975" height="509" alt="JdexStudio" loading={loading} />
+<img class="theme-logo-dark" src={assetUrl('assets/logo/logo-original.svg')} width="1975" height="509" alt="JdexStudio" loading={loading} />

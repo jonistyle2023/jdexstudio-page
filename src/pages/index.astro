@@ -1,0 +1,27 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import IconSprite from '../components/IconSprite.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/sections/Hero.astro';
+import Specialties from '../components/sections/Specialties.astro';
+import Services from '../components/sections/Services.astro';
+import Partners from '../components/sections/Partners.astro';
+import Process from '../components/sections/Process.astro';
+import Team from '../components/sections/Team.astro';
+import Contact from '../components/sections/Contact.astro';
+---
+<SiteLayout indexable={true}>
+  <IconSprite />
+  <Header />
+  <main id="contenido">
+    <Hero />
+    <Specialties />
+    <Services />
+    <Partners />
+    <Process />
+    <Team />
+    <Contact />
+  </main>
+  <Footer />
+</SiteLayout>

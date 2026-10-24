@@ -1,0 +1,23 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import ThemeLogo from '../components/ThemeLogo.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import { pageUrl } from '../lib/urls.js';
+---
+<SiteLayout title="Privacidad | JdexStudio" description="Información sobre el funcionamiento y la privacidad de esta versión del sitio de JdexStudio.">
+    <header class="site-header site-header--simple"><div class="container header-inner"><a class="brand" href={pageUrl()} aria-label="JdexStudio, inicio"><ThemeLogo /></a><ThemeToggle /></div></header>
+    <main class="container legal-page" id="contenido">
+      <h1>Privacidad de este sitio</h1>
+      <p>Esta primera versión presenta los servicios y el equipo de JdexStudio. Todavía no permite enviar formularios ni reservar consultas desde la página.</p>
+      <h2>Navegación</h2>
+      <p>La página no incorpora herramientas de analítica, publicidad ni cookies propias. Las fuentes y los recursos visuales se sirven con el sitio, sin solicitarlos a proveedores externos.</p>
+      <p>La elección entre modo claro y oscuro se guarda en este navegador para conservarla al volver al sitio.</p>
+      <h2>Reservas y correo</h2>
+      <p>Cuando estén disponibles, las reservas se realizarán en Google Calendar. Antes de introducir tus datos, podrás consultar las condiciones de privacidad de ese servicio. Los enlaces de correo abrirán la aplicación de correo que tengas configurada.</p>
+      <h2>Antes de habilitar el contacto</h2>
+      <p>Esta información se actualizará para identificar al responsable, el canal de contacto y el tratamiento de los datos utilizados para atender consultas.</p>
+      <a class="text-link" href={pageUrl()}>Volver al inicio</a>
+    </main>
+    <footer class="site-footer"><div class="container footer-bottom"><p>JdexStudio</p><a href={pageUrl("#contacto")}>Contacto</a></div></footer>
+
+</SiteLayout>
