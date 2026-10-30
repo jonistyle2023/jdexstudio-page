@@ -1,1 +1,16 @@
-<div class="specialties" aria-label="Nuestras especialidades"><div class="container specialties-inner"><span>Automatización</span><span>Software a medida</span><span>Desarrollo web</span><span>Datos y reportes</span><span>Cloud</span></div></div>
+---
+const specialties = [
+  { label: 'Automatización', icon: 'automation' },
+  { label: 'Software a medida', icon: 'software' },
+  { label: 'Desarrollo web', icon: 'web' },
+  { label: 'Datos y reportes', icon: 'database' },
+  { label: 'Cloud', icon: 'cloud' },
+];
+---
+<div class="specialties">
+  <ul class="container specialties-inner" aria-label="Nuestras especialidades">
+    {specialties.map(({ label, icon }) => (
+      <li><svg class="icon" aria-hidden="true"><use href={`#${icon}`} /></svg><span>{label}</span></li>
+    ))}
+  </ul>
+</div>

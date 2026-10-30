@@ -1,6 +1,6 @@
 @font-face {
   font-family:Poppins;
-  src:url('/assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+  src:url('/assets/fonts/Poppins-SemiBold.woff2') format('woff2');
   font-weight:600;
   font-style:normal;
   font-display:swap
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family:Poppins;
-  src:url('/assets/fonts/Poppins-Bold.ttf') format('truetype');
+  src:url('/assets/fonts/Poppins-Bold.woff2') format('woff2');
   font-weight:700;
   font-style:normal;
   font-display:swap
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family:Inter;
-  src:url('/assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  src:url('/assets/fonts/Inter-VariableFont_opsz,wght.woff2') format('woff2');
   font-weight:100 900;
   font-style:normal;
   font-display:swap
@@ -40,6 +40,7 @@
   --action-blue:#2478c0;
   --diagram-grid:#e5ebef;
   --diagram-route:#bdcdd9;
+  --partner-surface:#f5f8fa;
   color-scheme:light;
   color:var(--text);
   font-family:var(--font-body);
@@ -438,28 +439,24 @@ a,summary {
 .specialties {
   border-block:1px solid var(--line)
 }
+/* A semantic list of capabilities, with icons rather than unexplained separators. */
 .specialties-inner {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  list-style:none;
+  padding:24px 0;
+  gap:16px;
+}
+.specialties-inner li {
   display:flex;
-  justify-content:space-between;
-  gap:24px;
   align-items:center;
-  min-height:78px;
+  gap:12px;
+  color:var(--text);
   font-size:13px;
-  color:var(--muted)
+  font-weight:500;
+  line-height:1.5;
 }
-.specialties-inner span {
-  display:flex;
-  align-items:center;
-  gap:24px
-}
-.specialties-inner span:not(:last-child):after {
-  content:'';
-  display:block;
-  width:4px;
-  height:4px;
-  background:var(--blue);
-  border-radius:50%
-}
+.specialties-inner .icon {width:28px;height:28px;color:var(--blue)}
 .section-intro {
   display:grid;
   grid-template-columns:1.1fr 1fr;
@@ -892,13 +889,6 @@ a,summary {
     font-size:9px;
     left:9%
   }
-  .specialties-inner {
-    font-size:12px;
-    gap:14px
-  }
-  .specialties-inner span {
-    gap:14px
-  }
   .section {
     padding-block:88px
   }
@@ -1039,19 +1029,6 @@ a,summary {
   .flow-bottom {
     font-size:11px
   }
-  .specialties-inner {
-    justify-content:flex-start;
-    flex-wrap:wrap;
-    gap:14px 24px;
-    padding-block:22px;
-    min-height:0
-  }
-  .specialties-inner span {
-    gap:24px
-  }
-  .specialties-inner span:after {
-    display:none!important
-  }
   .section {
     padding-block:72px
   }
@@ -1173,7 +1150,7 @@ a,summary {
     gap:30px
   }
   .hero h1 {
-    font-size:43px;
+    font-size:clamp(36px,10.5vw,43px);
     letter-spacing:-.04em;
     line-height:1.14
   }
@@ -1197,7 +1174,7 @@ a,summary {
     gap:7px
   }
   .consultation-note {
-    font-size:10px;
+    font-size:12px;
     line-height:1.6;
     gap:6px;
     margin-top:18px
@@ -1216,20 +1193,16 @@ a,summary {
     font-size:10px
   }
   .flow-label,.flow-result {
-    font-size:9px;
+    font-size:10px;
     padding:6px
   }
   .flow-bottom {
-    font-size:8px;
+    font-size:10px;
     gap:6px;
     left:11%
   }
   .hero-visual figcaption {
     font-size:10px
-  }
-  .specialties-inner {
-    gap:12px 24px;
-    font-size:11px
   }
   .section {
     padding-block:64px
@@ -1751,6 +1724,7 @@ a,summary {
   --surface:#1a2a36;
   --diagram-grid:#253b4a;
   --diagram-route:#607c90;
+  --partner-surface:#f5f8fa;
   color-scheme:dark;
 }
 @media(prefers-color-scheme:dark) {
@@ -1765,6 +1739,7 @@ a,summary {
   --surface:#1a2a36;
   --diagram-grid:#253b4a;
   --diagram-route:#607c90;
+  --partner-surface:#f5f8fa;
   color-scheme:dark;
   }
   :root:not([data-theme]) .brand .theme-logo-light {display:none}
@@ -1795,7 +1770,7 @@ a,summary {
 :root[data-theme="dark"] .theme-toggle .theme-sun {display:block}
 :root[data-theme="dark"] .theme-toggle .theme-moon {display:none}
 .site-header--simple .theme-toggle {margin-left:auto}
-.partner-track li {background:var(--surface)}
+.partner-track li {background:var(--partner-surface)}
 
 /* Motion is deferred until the final implementation phase. */
 html[data-motion="off"] {scroll-behavior:auto}
@@ -1892,11 +1867,11 @@ html[data-motion="on"] :is(h1,h2,p,.flow-routes .route,.service-icon) {transitio
 .partner-marquee.is-visible .partner-belt {animation-play-state:running}
 .partner-marquee:is(:hover,:focus-within,.is-paused) .partner-belt,
 html.is-background .partner-belt {animation-play-state:paused}
-.partner-track li {background:var(--surface)}
-/* A slate backing keeps the supplied dark wordmarks legible without altering artwork. */
-:root[data-theme="dark"] .partner-track li {background:var(--surface);border-color:var(--surface)}
+.partner-track li {background:var(--partner-surface)}
+/* Original dark wordmarks need a light backing in both themes. */
+:root[data-theme="dark"] .partner-track li {background:var(--partner-surface);border-color:var(--partner-surface)}
 @media(prefers-color-scheme:dark) {
-  :root:not([data-theme]) .partner-track li {background:var(--surface);border-color:var(--surface)}
+  :root:not([data-theme]) .partner-track li {background:var(--partner-surface);border-color:var(--partner-surface)}
 }
 @media(max-width:1100px) {
   .header-inner {gap:16px}
@@ -1959,7 +1934,7 @@ html.is-background .hero-visual.is-playing .flow-center::after {animation-play-s
   0%,13.3%,100% {color:var(--blue)}
   5.3% {color:var(--text)}
 }
-.hero-visual figcaption {display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}
+.hero-visual figcaption {display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px;min-height:44px;text-align:left}
 .flow-replay {
   display:inline-flex;align-items:center;justify-content:center;gap:6px;
   min-height:44px;padding:8px 4px;border:0;border-radius:4px;
@@ -1977,3 +1952,127 @@ html[data-motion="off"] .flow-replay {display:none}
 .flow-replay .flow-play-symbol {display:none}
 .flow-replay[aria-pressed="true"] .flow-pause-symbol {display:none}
 .flow-replay[aria-pressed="true"] .flow-play-symbol {display:block}
+
+/* The process reads as a connected sequence; text never waits for motion. */
+.process-steps {gap:40px;counter-reset:none}
+.process-steps li {position:relative;border:0;padding:0;min-width:0}
+.step-heading {display:flex;align-items:center;gap:16px;min-height:64px}
+.process-steps .step-number {
+  display:grid;place-items:center;width:64px;height:64px;flex:none;
+  border:1px solid var(--line);border-radius:50%;background:var(--page);
+  font-size:20px;font-variant-numeric:tabular-nums;padding:0;
+}
+.process-steps .step-icon {margin:0;width:26px;height:26px;grid-area:auto}
+.process-steps h3 {margin:24px 0 12px;max-width:none}
+.step-connector {
+  position:absolute;top:20px;left:112px;width:calc(100% - 80px);height:24px;
+  fill:none;stroke:var(--diagram-route);stroke-width:1.5;overflow:visible;
+}
+.process-steps li:last-child .step-connector {display:none}
+.connector-signal {stroke:var(--blue);stroke-width:2.5;stroke-dasharray:18 110;stroke-dashoffset:128;opacity:0}
+.process.is-running .connector-signal {animation:process-transfer .85s var(--ease-out) both;animation-delay:var(--step-delay)}
+.process.is-running .step-number {animation:process-node .8s ease both;animation-delay:var(--step-delay)}
+.process-steps li:nth-child(1) {--step-delay:0s}
+.process-steps li:nth-child(2) {--step-delay:.85s}
+.process-steps li:nth-child(3) {--step-delay:1.7s}
+.process-steps li:nth-child(4) {--step-delay:2.55s}
+.process-controls {display:flex;justify-content:flex-end;margin-top:28px;min-height:44px}
+.process-replay {border:0;background:transparent;color:var(--blue);padding:10px 0;min-height:44px}
+.process-replay:disabled {cursor:default;color:var(--muted)}
+.process-replay:disabled .icon {transform:none}
+@keyframes process-transfer {
+  0% {stroke-dashoffset:128;opacity:0}
+  12%,85% {opacity:1}
+  100% {stroke-dashoffset:-18;opacity:0}
+}
+@keyframes process-node {
+  0%,100% {border-color:var(--line);color:var(--blue)}
+  35%,70% {border-color:var(--blue);color:var(--text)}
+}
+@media(max-width:800px) {
+  .specialties-inner {grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 16px;padding-block:24px}
+  .process-steps {grid-template-columns:1fr;gap:0}
+  .process-steps li {display:grid;grid-template-columns:64px 1fr;column-gap:24px;row-gap:10px;padding:0 0 40px}
+  .process-steps li:last-child {padding-bottom:0}
+  .step-heading {grid-column:1;grid-row:1/3;align-self:start;flex-direction:column;gap:12px}
+  .process-steps .step-icon {width:22px;height:22px}
+  .process-steps h3 {grid-column:2;margin:4px 0 0}
+  .process-steps p {grid-column:2;max-width:65ch}
+  .step-connector {left:12px;top:auto;bottom:14px;width:40px;height:24px;transform:rotate(90deg)}
+}
+@media(max-width:520px) {
+  .specialties-inner {grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 16px}
+  .specialties-inner li {font-size:12px;gap:10px}
+  .specialties-inner .icon {width:24px;height:24px}
+  .process-steps li {column-gap:20px}
+}
+@media(prefers-reduced-motion:reduce) {.process-controls {display:none}}
+html[data-motion="off"] .process-controls {display:none}
+
+/* A prominent social rail, fixed inside the available desktop gutter. */
+.social-sidebar {display:none}
+@media(min-width:1101px) and (min-height:600px) {
+  .social-sidebar {
+    position:fixed;z-index:25;top:50%;
+    left:max(2px,calc((100vw - 1240px)/4 - 36px));
+    transform:translateY(-50%);display:flex;flex-direction:column;
+    align-items:center;width:52px;padding:24px 0 10px;
+    border:1px solid var(--line);border-radius:36px;
+    background:var(--panel);color:var(--text);
+    box-shadow:0 12px 32px -18px #10182090;
+    animation:social-rail-enter .75s var(--ease-out) both;
+    transition:border-color .25s ease,box-shadow .25s ease;
+  }
+  .social-sidebar:is(:hover,:focus-within) {border-color:var(--blue);box-shadow:0 16px 36px -18px #10182090}
+  .social-sidebar-label {
+    writing-mode:vertical-rl;font-size:16px;font-weight:600;
+    letter-spacing:.08em;line-height:1.5;
+  }
+  .social-sidebar-separator {width:1px;height:36px;background:var(--blue);margin:18px 0 10px;transform-origin:top;animation:social-line-enter .6s var(--ease-out) .25s both}
+  .social-sidebar nav {display:flex;flex-direction:column;gap:6px}
+  .social-sidebar a {
+    position:relative;display:grid;place-items:center;width:48px;height:52px;
+    border-radius:50%;animation:social-link-enter .55s var(--ease-out) both;
+    transition:color .2s ease,background-color .2s ease,box-shadow .25s ease;
+  }
+  .social-sidebar a:nth-child(1) {animation-delay:.15s}
+  .social-sidebar a:nth-child(2) {animation-delay:.23s}
+  .social-sidebar a:nth-child(3) {animation-delay:.31s}
+  .social-sidebar a:nth-child(4) {animation-delay:.39s}
+  .social-sidebar a:nth-child(5) {animation-delay:.47s}
+  .social-sidebar a:is(:hover,:focus-visible) {color:var(--blue);background:var(--surface);box-shadow:0 6px 12px -8px #10182080}
+  .social-sidebar svg {
+    width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round;
+    transition:transform .35s var(--ease-out);
+  }
+  .social-sidebar a:is(:hover,:focus-visible) svg {transform:translateX(3px) scale(1.15) rotate(-6deg)}
+  .social-sidebar-tooltip {
+    position:absolute;left:calc(100% + 14px);top:50%;transform:translate(-6px,-50%);
+    padding:10px 14px;border:1px solid var(--line);border-radius:8px;
+    background:var(--panel);color:var(--text);font-size:13px;font-weight:500;white-space:nowrap;
+    visibility:hidden;opacity:0;pointer-events:none;
+    transition:opacity .2s ease,transform .25s var(--ease-out),visibility .2s;
+  }
+  .social-sidebar a:is(:hover,:focus-visible) .social-sidebar-tooltip {visibility:visible;opacity:1;transform:translate(0,-50%)}
+}
+@media(min-width:1400px) and (min-height:600px) {
+  .social-sidebar {width:72px}
+  .social-sidebar a {width:58px;height:58px}
+  .social-sidebar svg {width:30px;height:30px}
+  .social-sidebar-label {font-size:18px}
+}
+@keyframes social-rail-enter {
+  from {translate:-24px 0;opacity:.35}
+  to {translate:0 0;opacity:1}
+}
+@keyframes social-link-enter {
+  from {translate:-12px 0;opacity:.4}
+  to {translate:0 0;opacity:1}
+}
+@keyframes social-line-enter {from {transform:scaleY(.2)} to {transform:scaleY(1)}}
+@media(prefers-reduced-motion:reduce) {
+  .social-sidebar a:is(:hover,:focus-visible) svg {transform:none}
+  .social-sidebar-tooltip {transform:translate(0,-50%)}
+}
+html[data-motion="off"] .social-sidebar a:is(:hover,:focus-visible) svg {transform:none}

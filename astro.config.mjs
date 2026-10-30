@@ -12,7 +12,7 @@ export default defineConfig({
   base: siteUrl?.pathname || '/',
   trailingSlash: 'never',
   build: { format: 'file' },
-  compressHTML: false,
+  compressHTML: true,
   server: { host: '127.0.0.1', port: 5173 },
   devToolbar: { enabled: false },
 });

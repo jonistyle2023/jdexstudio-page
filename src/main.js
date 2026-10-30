@@ -93,3 +93,48 @@ if (heroVisual && flowToggle) {
     heroVisual.classList.add('is-visible');
   }
 }
+
+// Play the process once on entry; visitors can replay it without hiding any content.
+const processSection = document.querySelector('.process');
+const processReplay = document.querySelector('[data-process-replay]');
+if (processSection && processReplay) {
+  let played = false;
+  let replayFrame;
+  const canAnimate = () => !reducedMotion.matches && document.documentElement.dataset.motion !== 'off';
+  const stopProcess = () => {
+    cancelAnimationFrame(replayFrame);
+    processSection.classList.remove('is-running');
+    processReplay.disabled = false;
+  };
+  const playProcess = () => {
+    stopProcess();
+    if (!canAnimate() || document.hidden) return;
+    // Two frames restart the CSS sequence without forcing a synchronous layout.
+    replayFrame = requestAnimationFrame(() => {
+      replayFrame = requestAnimationFrame(() => {
+        processSection.classList.add('is-running');
+        processReplay.disabled = true;
+      });
+    });
+  };
+  processReplay.hidden = false;
+  processReplay.addEventListener('click', playProcess);
+  processSection.addEventListener('animationend', (event) => {
+    if (event.animationName === 'process-node' && event.target === processSection.querySelector('li:last-child .step-number')) {
+      processReplay.disabled = false;
+    }
+  });
+  reducedMotion.addEventListener('change', stopProcess);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopProcess();
+  });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) stopProcess();
+      else if (!played && canAnimate()) {
+        played = true;
+        playProcess();
+      }
+    }, { threshold: 0.15 }).observe(processSection);
+  }
+}
